@@ -1,8 +1,12 @@
+
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author GAURAV
@@ -46,8 +50,10 @@ public class adminadddoctor extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         cmbgender = new javax.swing.JComboBox<>();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         txtmob = new javax.swing.JTextField();
+        txtage = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtaddress = new javax.swing.JTextField();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -136,6 +142,15 @@ public class adminadddoctor extends javax.swing.JFrame {
 
         txtmob.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
 
+        txtage.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel12.setText("Address");
+        jLabel12.setOpaque(true);
+
+        txtaddress.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,6 +170,10 @@ public class adminadddoctor extends javax.swing.JFrame {
                 .addGap(225, 225, 225)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtsche, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -169,18 +188,16 @@ public class adminadddoctor extends javax.swing.JFrame {
                             .addComponent(jLabel9)
                             .addComponent(jLabel4))
                         .addGap(178, 178, 178)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtexe, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtspecial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
-                                .addComponent(cmbgender, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtlang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtemail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtmob, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(436, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtname)
+                            .addComponent(txtexe, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtspecial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                            .addComponent(cmbgender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtlang)
+                            .addComponent(txtemail)
+                            .addComponent(txtmob, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                            .addComponent(txtage))))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,18 +213,17 @@ public class adminadddoctor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(cmbgender, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                        .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtage, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbgender, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtspecial, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -231,7 +247,11 @@ public class adminadddoctor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtsche, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(txtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -240,7 +260,55 @@ public class adminadddoctor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        //int aid = Integer.parseInt(txtid.getText());
+        String name = txtname.getText();
+
+       int age=Integer.parseInt(txtage.getText());
+      String gender=cmbgender.getSelectedItem().toString();
+        String specialization = txtspecial.getText();
+        String experience = txtexe.getText();
+        String language = txtlang.getText();
+
+        int mobile = Integer.parseInt(txtmob.getText());
+        String emailid = txtemail.getText();
+        String schedule = txtsche.getText();
+         String address = txtaddress.getText();
+        if (txtemail.getText().trim().isEmpty() ||txtage.getText().trim().isEmpty() || txtspecial.getText().trim().isEmpty() || txtmob.getText().trim().isEmpty() || txtsche.getText().trim().isEmpty() || txtname.getText().trim().isEmpty() || txtexe.getText().trim().isEmpty() || txtlang.getText().trim().isEmpty()|| txtaddress.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "one or more field is empty");
+        } else {
+            try {
+
+                Database db = new Database();
+
+                String rg = ("insert into hmsdoctor(name,age,gender,specialization,experience,language,mobile,emailid,schedule,address)values(?,?,?,?,?,?,?,?,?,?)");
+                PreparedStatement pst = db.con.prepareStatement(rg);
+
+                pst.setString(1, name);
+                pst.setInt(2, age);
+                
+                pst.setString(3, gender);
+
+                pst.setString(4, specialization);
+                pst.setString(5, experience);
+                pst.setString(6, language);
+                pst.setInt(7, mobile);
+                pst.setString(8, emailid);
+                pst.setString(9, schedule);
+                 pst.setString(10, address);
+               
+                
+                int aa = pst.executeUpdate();
+                if (aa == 1) {
+                    JOptionPane.showMessageDialog(this, "Add Success");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Someting went wrong");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -281,10 +349,10 @@ public class adminadddoctor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbgender;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -295,6 +363,8 @@ public class adminadddoctor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtaddress;
+    private javax.swing.JTextField txtage;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtexe;
     private javax.swing.JTextField txtlang;

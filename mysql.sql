@@ -1,13 +1,15 @@
  create table hmsdoctor(
  did int primary key AUTO_INCREMENT ,
- dob varchar(50),
+ name varchar(50),
+ age int,
  gender varchar(50),
  specialization varchar(50),
  experience varchar(50),
  language varchar(50),
  mobile int,
  emailid varchar(50),
- schedule varchar(50)
+ schedule varchar(50),
+ address varchar(50)
 );
 
 create table hmspatient (
@@ -50,7 +52,7 @@ cghs_private varchar(50)
 create table admin(
  aid int primary key AUTO_INCREMENT,
  name varchar(50),
- dob varchar(50),
+ dob date,
  gender varchar(50),
  emailid varchar(50),
  mobile int ,

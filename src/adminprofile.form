@@ -173,16 +173,6 @@
                                       <Component id="txtname1" min="-2" pref="229" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="198" pref="198" max="-2" attributes="0"/>
-                                      <Component id="jCalendar1" min="-2" pref="229" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="161" pref="161" max="-2" attributes="0"/>
-                                      <Component id="cmbgender1" min="-2" pref="230" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
@@ -200,6 +190,18 @@
                                               <EmptySpace min="149" pref="149" max="-2" attributes="0"/>
                                               <Component id="txtaddress1" min="-2" pref="229" max="-2" attributes="0"/>
                                           </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="txtdob" min="-2" pref="229" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="161" pref="161" max="-2" attributes="0"/>
+                                          <Component id="cmbgender1" min="-2" pref="230" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -226,12 +228,12 @@
                           </Group>
                           <Component id="txtname1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCalendar1" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtdob" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
+                      <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -369,8 +371,6 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JCalendar" name="jCalendar1">
-            </Component>
             <Component class="javax.swing.JComboBox" name="cmbgender1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -392,6 +392,13 @@
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/medical-logo-png-909 (1).jpeg"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtdob">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Black" size="18" style="1"/>
                 </Property>
               </Properties>
             </Component>

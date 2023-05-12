@@ -1,3 +1,7 @@
+
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -28,10 +32,10 @@ public class adminlog extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtusernameadminlogin = new javax.swing.JTextField();
+        txtpasswordadminlogin = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        login = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -71,18 +75,18 @@ public class adminlog extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 274, -1));
+        txtusernameadminlogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtusernameadminlogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(txtusernameadminlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 274, -1));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtpasswordadminlogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtpasswordadminlogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtpasswordadminlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtpasswordadminloginActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 274, -1));
+        getContentPane().add(txtpasswordadminlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 274, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 102, 204));
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
@@ -91,12 +95,17 @@ public class adminlog extends javax.swing.JFrame {
         jLabel3.setOpaque(true);
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 120, -1));
 
-        jButton1.setBackground(new java.awt.Color(102, 153, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        jButton1.setText("LOGIN");
-        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
-        jButton1.setOpaque(true);
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, -1, -1));
+        login.setBackground(new java.awt.Color(102, 153, 255));
+        login.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        login.setText("LOGIN");
+        login.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        login.setOpaque(true);
+        login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginActionPerformed(evt);
+            }
+        });
+        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("NEW ADMIN ? REGISTER...");
@@ -108,9 +117,49 @@ public class adminlog extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtpasswordadminloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordadminloginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtpasswordadminloginActionPerformed
+
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+         String name=txtusernameadminlogin.getText();
+        String mobile=txtpasswordadminlogin.getText();
+        
+        if (txtpasswordadminlogin.getText().trim().isEmpty()||txtusernameadminlogin.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "plese enter some data");
+            txtpasswordadminlogin.setText("");
+            txtusernameadminlogin.setText("");
+          
+        } else{
+            try {
+                Database dbcon=new Database();
+                String s="select * from admin where name='"+name+"' and mobile='"+mobile+"'";
+                
+           
+                  
+                ResultSet res=dbcon.sm.executeQuery(s);
+
+                if(res.next()){
+                    
+                    
+                  new  adminprofile().setVisible(true);
+                  adminlog.this.dispose();
+                  
+                
+                }else{
+                   JOptionPane.showMessageDialog(adminlog.this, "plese enter valid data");
+                   txtpasswordadminlogin.setText("");
+                     txtusernameadminlogin.setText("");
+                      this.setVisible(false);
+                      this.setVisible(true);
+                }
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        
+        }
+    }//GEN-LAST:event_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,14 +197,14 @@ public class adminlog extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton login;
+    private javax.swing.JTextField txtpasswordadminlogin;
+    private javax.swing.JTextField txtusernameadminlogin;
     // End of variables declaration//GEN-END:variables
 }
